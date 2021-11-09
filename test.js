@@ -36,5 +36,5 @@ test("Testing unique chars", function () {
       "Humpty-Dumpty sat on a wall. Humpty-Dumpty had a great fall.",
       new Set(["the", "a", "on", "off"])
     )
-  ).toEqual({ words: 9, unique: 7 });
+  ).toEqual({ words: 7, unique: 6 });
 });
