@@ -1,13 +1,14 @@
-const { readLine } = require("./utils.js");
+const { readLine, readStopWords } = require("./utils.js");
+const wordUtils = require('./WordUtils.js');
 
 const readPromise = readLine("Enter text: ");
 readPromise.then(function (message) {
-  countWords(message);
+  const stopWords = readStopWords();
+  stopWords.then(function (stopWords) {
+    let output = wordUtils.countWords(message, new Set(stopWords));
+    console.log("Number of words: " + output);
+  });
 });
 
-function countWords(message) {
-  let regEx = new RegExp("[a-zA-Z]+", "g");
-  let matched = message.match(regEx);
-  let arr = matched === null ? [] : [...matched];
-  console.log("Number of words: " + arr.length);
-}
+
+
